@@ -4,7 +4,8 @@
   "description": "Implementation of https://www.tabnews.com.br/, to reproduce and learn concepts with https://www.curso.dev",
   "main": "index.js",
   "scripts": {
-    "dev": "trap 'npm run posttest' INT TERM; npm run services:up && npm run services:wait:database && npm run migrations:up && next dev",
+    "dev": "trap 'npm run postdev' INT TERM; npm run services:up && npm run services:wait:database && npm run migrations:up && next dev",
+    "postdev": "npm run services:stop",
     "test": "npm run services:up && concurrently -n next,jest --hide next -k -s command-jest \"next dev\" \"jest --runInBand\"",
     "posttest": "npm run services:stop",
     "test:watch": "jest --watchAll --runInBand",
