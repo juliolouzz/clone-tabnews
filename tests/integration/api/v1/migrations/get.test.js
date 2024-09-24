@@ -1,9 +1,8 @@
-import database from "infra/database.js";
 import orquestrator from "tests/orquestrator.js";
 
 beforeAll(async () => {
   await orquestrator.waitForAllServices();
-  await database.query("drop schema public cascade; create schema public;");
+  await orquestrator.clearDatabase();
 });
 
 describe("GET /api/v1/status", () => {
